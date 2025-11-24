@@ -1,0 +1,17 @@
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\bin\Debug\net9.0\MasterMidia.App.deps.json
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\bin\Debug\net9.0\MasterMidia.App.runtimeconfig.json
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\bin\Debug\net9.0\MasterMidia.App.dll
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\bin\Debug\net9.0\MasterMidia.App.pdb
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\bin\Debug\net9.0\MasterMidia.App.xml
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.csproj.AssemblyReference.cache
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.AssemblyInfoInputs.cache
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.AssemblyInfo.cs
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.csproj.CoreCompileInputs.cache
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.sourcelink.json
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.dll
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\refint\MasterMidia.App.dll
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.xml
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.pdb
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\MasterMidia.App.genruntimeconfig.cache
+C:\Users\pedro\Documents\Projects\MasterMidia-webapi\src\MasterMidia.App\obj\Debug\net9.0\ref\MasterMidia.App.dll

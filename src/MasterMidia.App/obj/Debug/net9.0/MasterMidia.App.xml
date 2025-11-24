@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MasterMidia.App</name>
+    </assembly>
+    <members>
+        <member name="M:MasterMidia.App.Features.Contents.GetContentById.GetContentByIdController.GetContentById(System.Guid)">
+            <summary>
+            Busca um conteúdo pelo seu identificador único (ID).
+            </summary>
+            <remarks>
+            Retorna os dados completos do conteúdo, se encontrado.
+            </remarks>
+            <param name="id">O ID (Guid) do conteúdo a ser buscado.</param>
+        </member>
+        <member name="M:MasterMidia.App.Features.Contents.UploadContent.UploadContentController.UploadContent(MasterMidia.App.Features.Contents.UploadContent.UploadContentRequest)">
+            <summary>
+            Inicia o upload de um arquivo de mídia (vídeo, música ou podcast).
+            </summary>
+            <remarks>
+            **PROTEGIDA:** Requer um Token JWT válido. O ID do Criador é extraído da claim 'NameIdentifier' do token.
+            <br/><br/>
+            **IMPORTANTE:** Este endpoint espera dados do tipo **multipart/form-data** e não JSON.
+            O upload é tratado de forma **assíncrona**, e a resposta será um **202 Accepted**.
+            </remarks>
+            <param name="request">O arquivo de mídia (IFormFile), o título e o tipo de mídia.</param>
+            <returns>Retorna um status 202 Accepted e o ID do conteúdo criado, indicando que o processamento foi iniciado.</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Playlists.AddContentToPlaylist.AddContentToPlaylistController.AddContent(System.Guid,MasterMidia.App.Features.Playlists.AddContentToPlaylist.AddContentToPlaylistRequest)">
+            <summary>
+            Adiciona um Conteúdo existente à Playlist especificada.
+            </summary>
+            <remarks>
+            **PROTEGIDA:** Requer um Token JWT válido. O usuário deve ser o proprietário da Playlist.
+            </remarks>
+            <param name="playlistId">O ID da Playlist a ser modificada.</param>
+            <param name="request">O ID do Conteúdo a ser adicionado.</param>
+        </member>
+        <member name="M:MasterMidia.App.Features.Playlists.CreatePlaylist.CreatePlaylistController.Create(MasterMidia.App.Features.Playlists.CreatePlaylist.CreatePlaylistRequest)">
+            <summary>
+            Cria uma nova Playlist para o usuário autenticado.
+            </summary>
+            <remarks>
+            **PROTEGIDA:** Requer um Token JWT válido. O ID do usuário é extraído da claim 'NameIdentifier' do token.
+            </remarks>
+            <param name="request">Nome da Playlist.</param>
+            <returns>A Playlist criada com o seu ID.</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Playlists.DeletePlaylist.DeletePlaylistController.Delete(System.Guid)">
+            <summary>
+            Deleta uma Playlist existente pertencente ao usuário autenticado.
+            </summary>
+            <remarks>
+            **PROTEGIDA:** Requer um Token JWT válido. O ID da Playlist é fornecido na rota.
+            O ID do usuário autenticado é usado para verificar a propriedade.
+            </remarks>
+            <param name="playlistId">O ID da Playlist a ser deletada (fornecido na rota).</param>
+            <returns>HTTP 204 No Content se a deleção for bem-sucedida.</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Playlists.GetAllPlaylists.GetAllPlaylistsController.GetAllPlaylistsAsync">
+            <summary>
+            Busca a lista completa de todas as Playlists registradas no sistema.
+            </summary>
+            <remarks>
+            **PROTEGIDA:** Requer um Token JWT válido. Retorna um array contendo os DTOs de todas as playlists.
+            Esta query é aberta para todos os usuários autenticados, retornando playlists públicas.
+            </remarks>
+            <returns>Lista de playlists (200 OK).</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Playlists.GetPlaylistById.GetPlaylistByIdController.GetPlaylistById(System.Guid)">
+            <summary>
+            Busca uma playlist pelo seu identificador único (ID).
+            </summary>
+            <remarks>
+            Retorna os dados completos da playlist, se encontrado.
+            </remarks>
+            <param name="id">O ID (Guid) da playlist a ser buscada.</param>
+            <returns>Dados do usuário ou um erro 404 (Not Found).</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Playlists.RemoveContentFromPlaylist.RemoveContentFromPlaylistController.RemoveContent(System.Guid,System.Guid)">
+            <summary>
+            Remove um Conteúdo específico de uma Playlist do usuário.
+            </summary>
+            <remarks>
+            **PROTEGIDA:** Requer autenticação. O usuário deve ser o proprietário da Playlist.
+            </remarks>
+            <param name="playlistId">O ID da Playlist a ser modificada.</param>
+            <param name="contentId">O ID do Conteúdo a ser removido.</param>
+            <returns>Confirmação da remoção.</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Playlists.UpdatePlaylist.UpdatePlaylistController.Update(MasterMidia.App.Features.Playlists.UpdatePlaylist.UpdatePlaylistRequest)">
+            <summary>
+            Atualiza o nome de uma Playlist existente pertencente ao usuário autenticado.
+            </summary>
+            <remarks>
+            **PROTEGIDA:** Requer um Token JWT válido. O ID da Playlist é fornecido no corpo da requisição.
+            O ID do usuário autenticado é usado para verificar a propriedade.
+            </remarks>
+            <param name="request">O ID e o novo nome da Playlist.</param>
+            <returns>HTTP 204 No Content se a atualização for bem-sucedida.</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Users.CreateUser.CreateUserController.Create(MasterMidia.App.Features.Users.CreateUser.CreateUserRequest)">
+            <summary>
+            Cria um novo usuário
+            </summary>
+            <remarks>
+            Este endpoint registra um novo usuário e retorna o link para o recurso criado (Location header).
+            </remarks>
+            <param name="request">Dados do usuário a ser criado (username, email, password).</param>
+            <returns>O ID do usuário recém-criado e a URL para acesso ao recurso.</returns>
+        </member>
+        <member name="T:MasterMidia.App.Features.Users.CreateUser.CreateUserRequestValidator">
+            <summary>
+            Validador para garantir que os dados de criação de usuário são válidos antes de serem processados.
+            </summary>
+        </member>
+        <member name="M:MasterMidia.App.Features.Users.GetAllUsers.GetAllUsersController.GetAllUsersAsync">
+            <summary>
+            Lista todos os usuários
+            </summary>
+            <remarks>
+             **PROTEGIDA:** Requer um Token JWT válido. Retorna um array contendo os DTOs de todos os usuários.
+            </remarks>
+        </member>
+        <member name="M:MasterMidia.App.Features.Users.GetMyUser.GetMyUserController.GetMyUserAsync">
+            <summary>
+            Busca todos os dados do usuário logado.
+            </summary>
+            <remarks>
+            Retorna o perfil completo do usuário, incluindo todas as suas playlists.
+            </remarks>
+            <returns>Dados completos do usuário (200 OK).</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Users.GetUserById.GetUserByIdController.GetUserByIdAsync(System.Guid)">
+            <summary>
+            Busca usuário pelo ID fornecido.
+            </summary>
+            <remarks>
+            Retorna os dados completos do usuário, se encontrado.
+            </remarks>
+            <param name="id">O ID (Guid) do usuário a ser buscado.</param>
+            <returns>Dados do usuário ou um erro 404 (Not Found).</returns>
+        </member>
+        <member name="T:MasterMidia.App.Features.Users.GetUserById.GetUserByIdResponse">
+            <summary>
+            DTO de resposta para a busca de um usuário.
+            Contém as informações públicas do usuário.
+            </summary>
+        </member>
+        <member name="M:MasterMidia.App.Features.Users.GetUserById.GetUserByIdResponse.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            DTO de resposta para a busca de um usuário.
+            Contém as informações públicas do usuário.
+            </summary>
+        </member>
+        <member name="T:MasterMidia.App.Features.Users.IPasswordHashService">
+            <summary>
+            Define a interface para serviços de hashing e verificação de senhas.
+            </summary>
+        </member>
+        <member name="M:MasterMidia.App.Features.Users.IPasswordHashService.HashPassword(System.String)">
+            <summary>
+            Gera o hash de uma senha em texto claro.
+            </summary>
+            <param name="password">A senha a ser hasheada.</param>
+            <returns>O hash seguro da senha.</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Users.IPasswordHashService.VerifyPassword(System.String,System.String)">
+            <summary>
+            Verifica se uma senha em texto claro corresponde a um hash armazenado.
+            </summary>
+            <param name="password">A senha em texto claro.</param>
+            <param name="hash">O hash armazenado.</param>
+            <returns>True se a senha for válida, False caso contrário.</returns>
+        </member>
+        <member name="M:MasterMidia.App.Features.Users.LoginUser.LoginUserController.Login(MasterMidia.App.Features.Users.LoginUser.LoginUserRequest)">
+            <summary>
+            Realiza o login do usário, validando credenciais e emitindo um Token Jwt.
+            </summary>
+            <remarks>
+            Em caso de sucesso, retorna o token JWT no corpo da resposta (200 OK).
+            Em caso de falha de autenticação (credenciais inválidas), retorna 401 Unauthorized.
+            </remarks>
+            <param name="request">Email e senha do usuário.</param>
+            <returns>O Token JWT.</returns>
+        </member>
+        <member name="T:MasterMidia.App.Infrastructure.Persistence.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MasterMidia.App.Infrastructure.Persistence.Migrations.UniqueConstraintsToUser">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UniqueConstraintsToUser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UniqueConstraintsToUser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UniqueConstraintsToUser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MasterMidia.App.Infrastructure.Persistence.Migrations.UpdateContentEntity">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UpdateContentEntity.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UpdateContentEntity.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UpdateContentEntity.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MasterMidia.App.Infrastructure.Persistence.Migrations.UpdateContentEntityAndUserEntity">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UpdateContentEntityAndUserEntity.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UpdateContentEntityAndUserEntity.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Persistence.Migrations.UpdateContentEntityAndUserEntity.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Services.PasswordHashService.HashPassword(System.String)">
+            <summary>
+            Gera o hash de uma senha utilizando o algoritmo BCrypt.
+            O BCrypt é a opção recomendada por ser resistente a ataques de força bruta e usar saltwork.
+            </summary>
+            <param name="password">A senha em texto claro.</param>
+            <returns>O hash seguro da senha.</returns>
+        </member>
+        <member name="M:MasterMidia.App.Infrastructure.Services.PasswordHashService.VerifyPassword(System.String,System.String)">
+            <summary>
+            Verifica uma senha em texto claro contra um hash previamente gerado.
+            </summary>
+            <param name="password">A senha em texto claro fornecida pelo usuário.</param>
+            <param name="hash">O hash armazenado no banco de dados.</param>
+            <returns>True se a senha corresponder ao hash, False caso contrário.</returns>
+        </member>
+        <member name="T:MasterMidia.App.Infrastructure.Storage.StorageServiceExtensions">
+            <summary>
+            Extensão para configurar os serviços de Firebase Storage (Google Cloud Storage).
+            Use services.AddFirebaseStorage() no Program.cs.
+            </summary>
+        </member>
+    </members>
+</doc>
